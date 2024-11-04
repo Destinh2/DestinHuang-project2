@@ -21,37 +21,35 @@ public class LinearEquationLogic {
         String tem2 = coords2.substring(1,tem1);
         String temp3 = coords.substring(temp1+1,temp4-1);
         String tem3 = coords2.substring(tem1 + 1 , tem4 - 1);
-        int numcord1 = Integer.parseInt(temp2);
-        int numcord2 = Integer.parseInt(temp3);
-        int numcord3 = Integer.parseInt(tem2);
-        int numcord4 = Integer.parseInt(tem3);
         //System.out.println(numcord1 + "," + numcord2);
-        LinearEquation equation = new LinearEquation(numcord1,numcord2,numcord3,numcord4);
+        LinearEquation equation = new LinearEquation(this.parse(temp2),this.parse(temp3),this.parse(tem2),this.parse(tem3));
 
 
-        if (numcord1 == numcord3) {
-            System.out.println("These points are on a vertical line: x = " + numcord1);
-            System.out.println("do you want to repeat this process again(yes/no): ");
-            String again = scan.nextLine();
-            if (again.equals("yes")) {
-                start();
-            } else {
-                System.out.println("thank you for your time");
-            }
+        if (this.parse(temp2) == this.parse(tem2)) {
+            System.out.println("These points are on a vertical line: x = " + this.parse(temp2));
+            this.restartCalc();
         } else {
             System.out.println(equation.lineInfo());
             System.out.print("enter a x value: ");
             double xval = scan.nextDouble();
             System.out.println(equation.coordinateForX(xval));
             scan.nextLine();
-            System.out.println("do you want to repeat this process again(yes/no): ");
-            String again = scan.nextLine();
-            if (again.equals("yes")) {
-                start();
-            } else {
-                System.out.println("thank you for your time");
-            }
+            this.restartCalc();
         }
+    }
+      private void restartCalc() {
+          System.out.println("do you want to repeat this process again(yes/no): ");
+          String again = scan.nextLine();
+          if (again.equals("yes")) {
+              start();
+          } else {
+              System.out.println("thank you for your time");
+          }
+      }
+
+      private int parse(String str1) {
+        String result = str1;
+        return(Integer.parseInt(result));
     }
 }
 

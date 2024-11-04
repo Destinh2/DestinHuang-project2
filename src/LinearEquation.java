@@ -22,13 +22,16 @@ public class LinearEquation {
     }
     public double yIntercept(){
         double slope = this.slope();
-        double result = roundedToHundredth((1.0*y1)-(1.0*x1 * slope));
+        double result = roundedToHundredth((1.0 * y1)-((slope) * (1.0 * x1)));
+        //1.0 * 1 - 1.0*6 * -1/3
+        //1 -
+        //6132
         return(result);
     }
     public double slope(){
-        double top = (double)y2-y1;
-        double bottom = (double)x2-x1;
-        return (top/bottom);
+        double top = y2-y1;
+        double bottom = x2-x1;
+        return (((1.0) * top)/((1.0) * bottom));
     }
     public String equation(){
         double y = y2-y1;
@@ -43,8 +46,6 @@ public class LinearEquation {
                     String result = "y= ";
                     result += "x ";
                     return (result);
-
-
                 } else if ((y/x)== -1) {
                     String result = "y= ";
                     result += "-x ";
@@ -55,20 +56,30 @@ public class LinearEquation {
                     result += "x ";
                     return(result);
                 } else {
-                    if ((y / x) < 0) {
-                        String result = "y=";
-                        result += "-";
-                        result += (int) y;
-                        result += "/";
-                        result += (int) (x * -1);
-                        result += "x ";
-                        return (result);
-                    } else if ((x < 0) && (y < 0)) {
+                    if ((x < 0) && (y < 0)) {
                         String result = "y=";
                         result += (int) (y * -1);
                         result += "/";
                         result += (int) (x * -1);
                         result += "x ";
+                        return (result);
+
+                    } else if (x < 0) {
+                        String result = "y=";
+                        result += "-";
+                        result += (int) (y);
+                        result += "/";
+                        result += (int) (x * -1);
+                        result += "x ";
+                        //result += "x<0 is the issue ";
+                        return (result);
+                    } else if (y < 0) {
+                        String result = "y=";
+                        result += (int)(y);
+                        result += "/";
+                        result += (int) (x);
+                        result += "x ";
+                        //result += "y<0 is the issue";
                         return (result);
                     } else {
                         String result = "y=";
@@ -84,6 +95,7 @@ public class LinearEquation {
                     String result = "y= ";
                     result += "x - ";
                     result += this.yIntercept() * -1;
+                    //result += "here is the problem";
                     return (result);
 
 
@@ -91,30 +103,41 @@ public class LinearEquation {
                     String result = "y= ";
                     result += "-x - ";
                     result += this.yIntercept() * -1;
+                    //result += "here is the problem";
                     return (result);
                 } else if ((((y/x) * 10) % 10) == 0) {
                     String result = "y= ";
                     result += (int) (y / x);
                     result += "x - ";
                     result += this.yIntercept() * -1;
+                    //result += "here is the problem";
                     return(result);
                 } else {
-                    if ((y / x) < 0) {
-                        String result = "y=";
-                        result += "-";
-                        result += (int) y;
-                        result += "/";
-                        result += (int) (x * -1);
-                        result += "x - ";
-                        result += this.yIntercept() * -1;
-                        return (result);
-                    } else if ((x < 0) && (y < 0)) {
+                    if ((x < 0) && (y < 0)) {
                         String result = "y=";
                         result += (int) (y * -1);
                         result += "/";
                         result += (int) (x * -1);
                         result += "x - ";
                         result += this.yIntercept() * -1;
+                        //result += "hjfdbsnfjkjnfs";
+                        return (result);
+                    } else if (x < 0) {
+                        String result = "y=";
+                        result += "-";
+                        result += (int) (y);
+                        result += "/";
+                        result += (int) (x * -1);
+                        result += "x - ";
+                        result += this.yIntercept()* -1;
+                        return (result);
+                    } else if (y < 0) {
+                        String result = "y=";
+                        result += (int)(y);
+                        result += "/";
+                        result += (int) (x);
+                        result += "x - ";
+                        result += this.yIntercept()* -1;
                         return (result);
                     } else {
                         String result = "y=";
@@ -122,7 +145,7 @@ public class LinearEquation {
                         result += "/";
                         result += (int) x;
                         result += "x - ";
-                        result += this.yIntercept() * -1;
+                        result += this.yIntercept()* -1;
                         return (result);
                     }
                 }
@@ -146,21 +169,30 @@ public class LinearEquation {
                     result += this.yIntercept();
                     return(result);
                 } else {
-                    if ((y / x) < 0) {
-                        String result = "y=";
-                        result += "-";
-                        result += (int) y;
-                        result += "/";
-                        result += (int) (x * -1);
-                        result += "x + ";
-                        result += this.yIntercept();
-                        return (result);
-                    } else if ((x < 0) && (y < 0)) {
+                    if ((x < 0) && (y < 0)) {
                         String result = "y=";
                         result += (int) (y * -1);
                         result += "/";
                         result += (int) (x * -1);
                         result += "x + ";
+                        result += this.yIntercept();
+                        //result += "hjfdbsnfjkjnfs";
+                        return (result);
+                    } else if (x < 0) {
+                        String result = "y=";
+                        result += "-";
+                        result += (int) (y);
+                        result += "/";
+                        result += (int) (x * -1);
+                        result += "x + ";
+                        result += this.yIntercept();
+                        return (result);
+                    } else if (y < 0) {
+                        String result = "y=";
+                        result += (int)(y);
+                        result += "/";
+                        result += (int) (x);
+                        result += "x +";
                         result += this.yIntercept();
                         return (result);
                     } else {
